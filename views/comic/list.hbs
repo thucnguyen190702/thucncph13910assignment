@@ -1,0 +1,42 @@
+<div>
+    <table class="table table-responsive table-striped table-hover" style="margin-top: 20px">
+        <thead>
+        <tr >
+            <th scope="col">ID</th>
+            <th scope="col">Tên Truyện</th>
+            <th scope="col">Tác Giả</th>
+            <th scope="col">Thể Loại</th>
+            <th scope="col">Hình Ảnh</th>
+            <th scope="col">Nội Dung</th>
+            <th scope="col">Nội Dung</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {{#each listComics}}
+            <tr>
+                <th scope="row">{{this.id}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.author}}</td>
+                <td>{{this.category}}</td>
+                <td><img width="75" height="45" src="{{this.image}}"></td>
+                <td>{{this.content}}</td>
+                <td style="text-align: center;"><a style="text-decoration: none"
+                                                                             href="/comics/update/{{this._id}}">Sửa</a></td>
+<!--                <td style="background-color: red;text-align: center;color: white"><a href="javascript:xoa()">Xóa</a></td>-->
+                <td style="text-align: center"><a class="btn btn-danger" style="text-decoration: none" href="/comics/delete/{{this._id}}">Xóa</a></td>
+                <td style="text-align: center"><a class="btn btn-primary"  style="text-decoration: none" href="/comics/addimage/{{this._id}}">Add</a></td>
+
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+<!--<script>-->
+<!--    function xoa() {-->
+<!--       let a=confirm("Bạn có muốn xóa không")-->
+<!--        if(a){-->
+<!--            document.location="/comics/delete/{{this._id}}";-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->

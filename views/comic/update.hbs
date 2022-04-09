@@ -1,0 +1,66 @@
+<section class="vh-100 bg-image mt-3 mb-5">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-4">
+                            <h2 class="text-uppercase text-center mb-5">Update Comic</h2>
+                            <form action="" method="post">
+<!--                                <div class="row">-->
+<!--                                    <div class="form-outline">-->
+<!--                                        <label class="form-label" for="firstName">ID</label>-->
+<!--                                        <input type="number" id="firstName" name="id" class="form-control form-control-lg"/>-->
+
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1cg">Tên Truyện</label>
+                                    <input value="{{itemBook.name}}" type="text" id="form3Example1cg" name="name" class="form-control form-control-lg" />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example3cg">Tác Giả</label>
+                                    <input value="{{itemBook.author}}" type="text" id="form3Example3cg" name="author" class="form-control form-control-lg" />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example3cg">Thể Loại</label>
+                                    <input type="text" value="{{itemBook.category}}" id="form3Example3cg" name="category" class="form-control form-control-lg" />
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example4cg">Nội dung</label>
+                                    <textarea class="form-control" rows="3" name="content" placeholder="Content comic">{{itemBook.content}}</textarea>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example4cdg">Ảnh</label>
+                                    <img src="" id="img_preview" height="200" alt="Image Preview...">
+                                    <input class="form-control form-control-lg" onchange="preViewFile()" id="image"  type="file" />
+                                    <input type="hidden" name="anhVip" id="anhVip">
+                                    <div class="small text-muted mt-2">Upload your photo, video or any related file. Maximum file size 50 MB</div>
+                                </div>
+
+                                <div class="d-flex justify-content-center mt-3">
+                                    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-white">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function preViewFile(){
+        const preview = document.querySelector('#img_preview');
+        const file = document.querySelector('#image').files[0];
+        const anhVip = document.querySelector('#anhVip');
+        const reader = new FileReader();
+        reader.addEventListener("load",function (){
+            preview.src = reader.result;
+            anhVip.value = reader.result;
+        },false);
+        if (file){
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
