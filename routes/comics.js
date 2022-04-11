@@ -19,9 +19,9 @@ router.get('/delete/:id', comicMiddleware.LoginRequire, comicController.getDelet
 router.post('/delete/:id', comicMiddleware.LoginRequire, comicController.postDeleteComic);
 
 var multerupload = multer({dest: './tmp/'});
-router.get('/addimage/:id', (req, res, next) => {
-    res.render('./comic/addimage');
-})
+// router.get('/addimage/:id', (req, res, next) => {
+//     res.render('./comic/addimage');
+// })
 // router.post('/addimage/:id', multerupload.array('anh', 10, function (req, res) {
 //     var files = req.files;
 //     console.log(files)
