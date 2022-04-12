@@ -1,6 +1,28 @@
 const bcrypt = require('bcrypt');
 const User = require("../models/user.model");
-
+const Admin = require("../models/admin.model");
+exports.getAllUser = async (req,res,next)=>{
+    console.log(req.body);
+    const body = req.body;
+    const user = await Admin.findOne({email: body.email});
+    if (user) {
+        console.log(user);
+        //check password
+        const validPassword = await bcrypt.compare(body.password, user.password);
+        if (validPassword) {
+            console.log('Login Successfully');
+            // req.session.user = user;
+            return res.redirect('/');
+        } else {
+            return res.status(400).json({error: "Sai pass"});
+        }
+    } else {
+        return res.status(401).json({error: "Khong ton tai user"});
+    }
+    res.render('./admin/login');
+    // var listUser = await User.find();
+    // res.json(listUser);
+}
 //post register
 exports.postReg = async (req, res, next) => {
     try {
@@ -20,7 +42,7 @@ exports.postReg = async (req, res, next) => {
 //post login
 exports.postLogin = async (req, res, next) => {
     try {
-        const user = await User.findByCredentials(req.body.username, req.body.password);
+        const user = await User.findByCredentials(req.body.email, req.body.password);
         if (!user) {
             return res.status(401).send({error: 'Login failed ! Check authentication credentials'})
         }

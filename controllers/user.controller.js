@@ -17,10 +17,7 @@ exports.postAddUser = async (req, res, next) => {
     const objUser = new UserModel({
         username: req.body.fullname,
         password: await bcrypt.hash(req.body.password,salt),
-        birth: req.body.birth,
-        gender:req.body.gender,
         email: req.body.email,
-        phone: req.body.phone,
     });
     objUser.save(function (err) {
         if (err) {
@@ -33,7 +30,7 @@ exports.postAddUser = async (req, res, next) => {
         res.render('./user/Add', {msg: 'Xac nhan pass sai', body: req.body});
         return;
     }else {
-        res.redirect('/users/list');0
+        res.redirect('/users/list');
     }
 
 }
@@ -48,25 +45,28 @@ exports.getUpdateUser = async (req, res, next) => {
     }
     res.render('./user/update', {itemUser: itemUser});
 }
-exports.postUpdateUser = (req, res, next) => {
+exports.postUpdateUser = async (req, res, next) => {
+    const salt = await bcrypt.genSalt(10);
     console.log(req.body);
     let dieu_kien = {
         _id: req.params.id,
     }
     let data = {
         username: req.body.fullname,
-        password: req.body.password,
-        birth: req.body.birth,
-        gender:req.body.gender,
+        password: await bcrypt.hash(req.body.password,salt),
         email: req.body.email,
-        phone: req.body.phone,
     }
     UserModel.updateOne(dieu_kien, data, function (err, res) {
         if (err) {
             res.send('Update Error !!', err.message);
         }
     })
-    res.redirect('/users/list');
+    if (req.body.password != req.body.repassword) {
+        res.render('./user/Add', {msg: 'Xac nhan pass sai', body: req.body});
+        return;
+    }else {
+        res.redirect('/users/list');
+    }
 }
 exports.getDeleteUser = async (req, res, next) => {
     console.log(req.params);

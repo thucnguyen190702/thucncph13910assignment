@@ -4,12 +4,7 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Họ và Tên</th>
-<!--            <th scope="col">Password</th>-->
-            <th scope="col">Ngày Sinh</th>
             <th scope="col">Email</th>
-
-            <th scope="col">Giới Tính</th>
-            <th scope="col">Số điện thoại</th>
             <th scope="col">Sửa</th>
             <th scope="col">Xóa</th>
             <!--            <th scope="col">Địa chỉ</th>-->
@@ -20,13 +15,7 @@
             <tr>
                 <th scope="row">{{this.id}}</th>
                 <td>{{this.username}}</td>
-<!--                <td>{{this.password}}</td>-->
-                <td>{{this.birth}}</td>
                 <td>{{this.email}}</td>
-
-                <td>{{this.gender}}</td>
-                <td>{{this.phone}}</td>
-                <!--                <td>{{this.address}}</td>-->
                 <td style="text-align: center;"><a class="btn btn-primary"
                         style="text-decoration: none" href="/users/update/{{this._id}}">Sửa</a></td>
                 <td style="text-align: center"><a class="btn btn-danger" style="text-decoration: none" href="/users/delete/{{this._id}}"  >Xóa</a>
