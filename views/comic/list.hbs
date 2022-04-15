@@ -20,8 +20,8 @@
                 <td>{{this.author}}</td>
                 <td>{{this.category}}</td>
                 <td><img width="75" height="45" src="{{this.image}}"></td>
-                <td>{{this.content}}</td>
-                <td style="text-align: center;"><a style="text-decoration: none"
+                <td id="comic_content">{{this.content}}</td>
+                <td style="text-align: center;"><a class="btn btn-warning" style="text-decoration: none"
                                                                              href="/comics/update/{{this._id}}">Sửa</a></td>
 <!--                <td style="background-color: red;text-align: center;color: white"><a href="javascript:xoa()">Xóa</a></td>-->
                 <td style="text-align: center"><a class="btn btn-danger" style="text-decoration: none" href="/comics/delete/{{this._id}}">Xóa</a></td>
@@ -32,11 +32,9 @@
         </tbody>
     </table>
 </div>
-<!--<script>-->
-<!--    function xoa() {-->
-<!--       let a=confirm("Bạn có muốn xóa không")-->
-<!--        if(a){-->
-<!--            document.location="/comics/delete/{{this._id}}";-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
+<script>
+    let a={{this.content}};
+    let result=String.subString(1,70)+"....";
+
+    document.getElementById("text-content").InnerHTML=result;
+</script>

@@ -55,7 +55,7 @@ exports.postLogin = async (req, res, next) => {
 }
 //get profile
 exports.getProfile = (req, res, next) => {
-    res.send(req.user)
+    res.send(req.user);
 }
 //post logout one device
 exports.postLogOut = async (req, res, next) => {

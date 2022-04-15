@@ -19,48 +19,10 @@ router.get('/delete/:id', comicMiddleware.LoginRequire, comicController.getDelet
 router.post('/delete/:id', comicMiddleware.LoginRequire, comicController.postDeleteComic);
 
 var multerupload = multer({dest: './tmp/'});
-// router.get('/addimage/:id', (req, res, next) => {
-//     res.render('./comic/addimage');
-// })
-// router.post('/addimage/:id', multerupload.array('anh', 10, function (req, res) {
-//     var files = req.files;
-//     console.log(files)
-//     // let dieukien = {
-//     //     _id:req.params.id,
-//     // }
-//     // console.log(dieukien);
-//     //
-//     // console.log(files)
-//     // let data = {
-//     //     imagecontent:files
-//     // }
-//     // await ComicModel.updateOne(dieukien,data,function (err){
-//     //     if (err){
-//     //         console.log(err);
-//     //     }
-//     // });
-//     // res.redirect('/comics/list');
-//     res.end();
-// }))
-router.post('/addimage/:id', multerupload.array('anh', 10),async function(req, res) {
-    // hàm này có thể cho vào controller
-    var files = req.files;
-    console.log(files) ;// lấy được mảng các file rồi thì dùng vòng lặp để duyệt mảng rồi làm gì đó thì tùy
-    let dieukien = {
-        _id: req.params.id //lấy id trên thanh địa chỉ
-    }
-    let dulieu = {
-        imagecontent:files,
-    }
-    await ComicModel.updateOne(dieukien, dulieu)
-        .catch((err) => {
-            if (err) {
-                res.send("Lỗi cập nhật" + err.message);
-            }
-        })
-    res.redirect('/comics/list');
-    res.end();
-});
+router.get('/addimage/:id', (req, res, next) => {
+    res.render('./comic/addimage');
+})
+router.post('/addimage/:id', multerupload.array('anh', 10),comicController.postAddPhoto);
 module.exports = router;
 
 
