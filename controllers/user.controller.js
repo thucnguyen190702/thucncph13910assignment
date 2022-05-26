@@ -11,6 +11,9 @@ exports.getListUser = async (req, res, next) => {
 exports.getAddUser = (req, res, next) => {
     res.render('./user/Add');
 }
+exports.postSearchUser = async (req, res, next) => {
+    let listUser = await UserModel.find({name: req.body.name});
+}
 exports.postAddUser = async (req, res, next) => {
     console.log(req.body);
     const salt = await bcrypt.genSalt(10);
