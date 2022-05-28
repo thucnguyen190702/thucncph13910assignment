@@ -43,6 +43,7 @@ exports.postReg = async (req, res, next) => {
 exports.postLogin = async (req, res, next) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password);
+        console.log(user);
         if (!user) {
             return res.status(401).send({error: 'Login failed ! Check authentication credentials'})
         }
