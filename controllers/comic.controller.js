@@ -1,8 +1,6 @@
 var fs = require('fs');
 const ComicModel = require('../models/comic.model');
 const multer = require("multer");
-const comicMiddleware = require("../middleware/auth.midddleware");
-var uploader = multer({dest:'./tmp/'});
 const {resolve} = require("path");
 //list
 exports.getListComic = async (req, res, next) => {

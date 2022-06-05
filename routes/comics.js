@@ -14,7 +14,7 @@ router.post('/update/:id', comicMiddleware.LoginRequire, comicController.postUpd
 //add
 router.get('/Add', comicMiddleware.LoginRequire, comicController.getAddComic);
 router.post('/Add', comicMiddleware.LoginRequire, comicController.postAddComic);
-// router.get('/getdataapi',comicController.listComicMob);
+//delete
 router.get('/delete/:id', comicMiddleware.LoginRequire, comicController.getDeleteComic);
 router.post('/delete/:id', comicMiddleware.LoginRequire, comicController.postDeleteComic);
 
